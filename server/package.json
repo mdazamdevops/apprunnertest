@@ -5,12 +5,13 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsup src/index.ts --format esm --out-dir dist --clean",
+    "build": "tsup src/index.ts --format esm --out-dir dist --clean --external lightningcss",
+    "start": "node dist/index.js",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "@crazytrainai/shared": "workspace:*",
+    "@crazytrainai/shared": "0.1.0",
     "@google-cloud/storage": "^7.10.2",
     "connect-pg-simple": "^9.0.0",
     "cors": "^2.8.5",
@@ -37,6 +38,8 @@
     "tsup": "^7.2.0",
     "tsx": "^4.6.1",
     "typescript": "^5.3.3",
-    "@types/morgan": "^1.9.9"
+    "@types/morgan": "^1.9.9",
+    "lightningcss": "^1.25.1"
   }
 }
+
