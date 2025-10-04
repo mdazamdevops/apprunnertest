@@ -11,15 +11,14 @@
     "build": "npm run build --workspace=shared && npm run build --workspace=server",
     "dev": "concurrently \"npm run dev --workspace=server\" \"npm run dev --workspace=client\"",
     "start": "npm run start --workspace=server",
-    "db:push": "npm run db:push --workspace=server",
-    "db:studio": "npm run db:studio --workspace=server",
-    "install:all": "npm install --legacy-peer-deps"
+    "install:all": "npm install --legacy-peer-deps",
+    "build:prod": "npm run install:all && npm run build"
   },
   "devDependencies": {
     "concurrently": "^8.2.0"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": "18.x",
     "npm": ">=9.0.0"
   }
 }
