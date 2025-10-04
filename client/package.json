@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@crazytrainai/shared": "workspace:*",
+    "@crazytrainai/shared": "0.1.0",
     "@tanstack/react-query": "^5.20.1",
     "@tanstack/react-query-devtools": "^5.20.1",
     "@uppy/core": "^3.5.1",
@@ -38,3 +38,4 @@
     "vite": "^5.0.8"
   }
 }
+
