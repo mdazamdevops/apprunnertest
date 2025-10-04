@@ -18,22 +18,29 @@ app.get("/auth/google/callback", googleAuthCallbackHandler, (_req, res) => {
   res.redirect("/");
 });
 
-// Fix: Wrap top-level await in async IIFE
-(async () => {
-  try {
-    await registerVite(app);
-  } catch (error) {
-    console.error("Failed to start Vite middleware", error);
-  }
-})();
+// Fix: Remove top-level await by using .then().catch()
+registerVite(app).then(() => {
+  console.log("Vite middleware registered");
+}).catch((error) => {
+  console.error("Failed to start Vite middleware", error);
+});
 
 const distPath = path.resolve(process.cwd(), "dist", "public");
 app.use(express.static(distPath));
 
 registerRoutes(app);
 
+// Health check route
+app.get("/health", (req, res) => {
+  res.json({ 
+    status: "healthy", 
+    service: "server",
+    timestamp: new Date().toISOString(),
+    nodeVersion: process.version
+  });
+});
+
 // Basic error handler
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
   console.error(err);
   res.status(500).json({ error: "Internal Server Error" });
@@ -41,5 +48,7 @@ app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
 
 const port = Number(process.env.PORT ?? 5000);
 app.listen(port, "0.0.0.0", () => {
-  console.log(`CrazyTrainAI server listening on port ${port}`);
+  console.log(`✅ CrazyTrainAI server listening on port ${port}`);
+  console.log(`✅ Node.js version: ${process.version}`);
+  console.log(`✅ Environment: ${process.env.NODE_ENV}`);
 });
