@@ -1,14 +1,14 @@
 name: apprunnertest
 services:
 - name: server
-  source_dir: /
+  source_dir: /server
   github:
     repo: mdazamdevops/apprunnertest
     branch: main
-  run_command: cd server && npm start
+  run_command: npm start
   build_command: |
     npm install --legacy-peer-deps
-    cd server && npm run build
+    npm run build
   environment_slug: node-js
   instance_count: 1
   instance_size_slug: basic-xxs
@@ -18,3 +18,5 @@ services:
     value: production
   - key: PORT
     value: "5000"
+  - key: NPM_CONFIG_LEGACY_PEER_DEPS
+    value: "true"
