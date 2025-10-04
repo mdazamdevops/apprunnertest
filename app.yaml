@@ -1,12 +1,14 @@
 name: apprunnertest
 services:
 - name: server
-  source_dir: /
+  source_dir: /server
   github:
     repo: mdazamdevops/apprunnertest
     branch: main
-  run_command: npm run start
-  build_command: npm run install:all && npm run build:all
+  run_command: npm start
+  build_command: |
+    npm install --legacy-peer-deps
+    npm run build
   environment_slug: node-js
   instance_count: 1
   instance_size_slug: basic-xxs
