@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsup src/index.ts src/vite.ts --format esm --out-dir dist --clean --no-external",
+    "build": "tsup src/index.ts src/vite.ts --format esm --out-dir dist --clean",
     "start": "node dist/index.js",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio"
