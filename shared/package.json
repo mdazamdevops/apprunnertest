@@ -2,8 +2,15 @@
   "name": "@crazytrainai/shared",
   "version": "0.1.0",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/schema.cjs",
+  "module": "dist/schema.js",
+  "types": "dist/schema.d.ts",
+  "exports": {
+    "./schema": {
+      "import": "./dist/schema.js",
+      "require": "./dist/schema.cjs"
+    }
+  },
   "files": [
     "dist"
   ],
