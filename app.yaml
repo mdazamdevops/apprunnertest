@@ -4,6 +4,7 @@ services:
   github:
     repo: mdazamdevops/apprunnertest
     branch: main
+    deploy_on_push: true
   source_dir: /
   build_command: npm install --legacy-peer-deps && npm run build
   run_command: npm start
