@@ -20,5 +20,9 @@
   "engines": {
     "node": "18.x",
     "npm": ">=9.0.0"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.6",
+    "drizzle-zod": "^0.8.3"
   }
 }
