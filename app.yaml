@@ -1,24 +1,20 @@
 name: apprunnertest
 services:
 - name: server
-  source_dir: /server
   github:
     repo: mdazamdevops/apprunnertest
     branch: main
+  source_dir: /
+  build_command: npm run build:prod
   run_command: npm start
-  build_command: |
-    npm install --legacy-peer-deps
-    npm run build
   environment_slug: node-js
   instance_count: 1
   instance_size_slug: basic-xxs
-  http_port: 5000
-  environment_variables:
+  http_port: 8080
+  envs:
   - key: NODE_ENV
     value: production
   - key: PORT
-    value: "5000"
-  - key: CLIENT_ORIGIN
-    value: "https://your-app.ondigitalocean.app"
+    value: "8080"
   - key: NPM_CONFIG_LEGACY_PEER_DEPS
     value: "true"
