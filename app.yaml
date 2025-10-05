@@ -5,8 +5,11 @@ services:
     repo: mdazamdevops/apprunnertest
     branch: main
   source_dir: /
-  build_command: npm run build:prod
-  run_command: npm start
+  build_command: |
+    npm install --legacy-peer-deps
+    npm run build --workspace=shared
+    npm run build --workspace=server
+  run_command: npm run start --workspace=server
   environment_slug: node-js
   instance_count: 1
   instance_size_slug: basic-xxs
