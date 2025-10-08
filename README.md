@@ -85,3 +85,4 @@ CrazyTrainAI is a full-stack subscription web application that allows customers 
 ## License
 
 This project is provided under the MIT license. See [LICENSE](./LICENSE) for details.
+
